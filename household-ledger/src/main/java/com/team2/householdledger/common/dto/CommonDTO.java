@@ -22,8 +22,8 @@ public class CommonDTO<T> {
                 .build();
     }
 
-    public static CommonDTO<Object> error(int status, String message) {
-        return CommonDTO.<Object>builder()
+    public static <T> CommonDTO<T> error(int status, String message) {
+        return CommonDTO.<T>builder()
                 .status(status)
                 .message(message)
                 .build();

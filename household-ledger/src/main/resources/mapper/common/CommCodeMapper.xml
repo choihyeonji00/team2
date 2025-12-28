@@ -6,6 +6,5 @@
         comm_cd AS commCd, grp_cd AS grpCd, comm_nm AS commNm, sort_no AS sortNo, use_yn AS useYn
         FROM comm_code WHERE grp_cd = #{grpCd} AND use_yn = 'Y' ORDER BY sort_no ASC </select>
 
-    <select id="findNmByCommCd" resultType="String"> SELECT comm_nm FROM comm_code WHERE comm_cd =
-        #{commCd} </select>
+
 </mapper>

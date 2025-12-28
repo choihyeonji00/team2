@@ -9,6 +9,4 @@ public interface CommCodeMapper {
     // 특정 그룹 코드의 모든 공통 코드 조회
     List<CommCode> findByGrpCd(String grpCd);
 
-    // 코드값으로 코드명 조회
-    String findNmByCommCd(String commCd);
 }

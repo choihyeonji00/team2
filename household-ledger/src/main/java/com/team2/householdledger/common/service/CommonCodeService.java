@@ -20,11 +20,4 @@ public class CommonCodeService {
         return commCodeMapper.findByGrpCd(grpCd);
     }
 
-    /**
-     * 코드로 코드명 조회
-     * 예: "INC01" -> "월급"
-     */
-    public String getCodeName(String commCd) {
-        return commCodeMapper.findNmByCommCd(commCd);
-    }
 }
