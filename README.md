@@ -106,12 +106,13 @@ graph LR
     User --> Write
     User --> Edit
     User --> MonthStats
+    User --> CatStats
 
     %% 4. 관계 정의 (Include & Extend)
-    %% 가계부 등록에는 카테고리 확인이 포함됨
-    Write -.- |include| CheckCat
-    %% 알림은 가계부 등록 시 조건부 발생 (확장)
-    Alert -.- |extend| Write
+    %% 가계부 등록 -> (포함) -> 카테고리 확인
+    Write --> |include| CheckCat
+    %% 알림 -> (확장: 조건부 실행) -> 가계부 등록
+    Alert -.-> |extend| Write
 
     %% 5. 스타일링 (색상 구분)
     classDef memClass fill:#e3f2fd,stroke:#1e88e5,stroke-width:1px;
