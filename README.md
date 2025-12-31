@@ -18,29 +18,24 @@
 
 # 📌 기획 (Planning)
 
-## 2️⃣ 요구사항
+## 2️⃣ 요구사항 상세 (Requirements Specification)
 
-### 필수 기능
-1. **테이블 목록 조회**
-   - DB에 어떤 테이블이 있는지 확인
-2. **테이블 컬럼 구조 확인**
-   - 컬럼 이름, 데이터 타입, NULL 여부
-3. **조회(Read)**
-   - 컬럼 체크 후 SELECT 문 자동 생성
-   - 실행 결과 테이블 표시
-4. **추가(Create)**
-   - 입력 폼으로 새 데이터 추가
-5. **수정(Update)**
-   - PK 기준 단일 행 수정
-6. **삭제(Delete)**
-   - PK 기준 단일 행 삭제
-7. **SQL 미리보기**
-   - 어떤 SQL이 실행되는지 화면에 표시
+### 기능 요구사항 목록
+
+| ID | 분류 | 요구사항 명 | 설명 | 중요도 |
+|:---:|:---:|:---|:---|:---:|
+| **REQ-001** | 테이블 | 테이블 목록 조회 | DB에 존재하는 모든 테이블 목록을 확인한다. | 상 |
+| **REQ-002** | 테이블 | 테이블 구조 확인 | 특정 테이블의 컬럼 정보(타입, NULL 여부 등)를 상세 조회한다. | 상 |
+| **REQ-003** | 데이터 | 데이터 조회 (SELECT) | 선택한 컬럼에 대한 SELECT 쿼리를 생성하고 실행 결과를 확인한다. | 상 |
+| **REQ-004** | 데이터 | 데이터 추가 (INSERT) | 입력 폼을 통해 새로운 데이터를 테이블에 추가한다. | 상 |
+| **REQ-005** | 데이터 | 데이터 수정 (UPDATE) | PK를 기준으로 특정 행의 데이터를 수정한다. | 중 |
+| **REQ-006** | 데이터 | 데이터 삭제 (DELETE) | PK를 기준으로 특정 행을 삭제한다. | 중 |
+| **REQ-007** | 유틸리티 | SQL 미리보기 | GUI 동작 시 실제로 실행되는 SQL 문을 화면에 표시한다. | 상 |
 
 ### 제한 사항
-- SQL 직접 입력 X
-- JOIN, WHERE 자유 입력 X
-- 다중 행 Update/Delete X
+- **SQL 직접 입력 불가**: 사용자가 임의의 SQL을 작성하여 실행할 수 없다.
+- **복잡한 쿼리 제한**: JOIN, 서브쿼리, 자유로운 WHERE 절 입력은 지원하지 않는다.
+- **단건 처리**: UPDATE와 DELETE는 PK를 기준으로 한 번에 한 건씩만 처리한다.
 
 ---
 
@@ -48,33 +43,33 @@
 
 ### 3.1 유스케이스 (Use Case)
 
-개발자가 시스템을 통해 어떤 기능을 수행할 수 있는지 보여주는 다이어그램입니다.
+개발자가 시스템을 통해 수행하는 기능을 요구사항 ID와 매핑하여 보여주는 다이어그램입니다.
 
 ```mermaid
 graph TD
     User((Developer))
 
     subgraph "DB Buddy System"
-        UC1[테이블 목록 조회]
-        UC2[테이블 상세(컬럼) 확인]
-        UC3[데이터 조회 (SELECT)]
-        UC4[데이터 추가 (INSERT)]
-        UC5[데이터 수정 (UPDATE)]
-        UC6[데이터 삭제 (DELETE)]
-        UC7[SQL 미리보기]
+        R1["REQ-001<br/>테이블 목록 조회"]
+        R2["REQ-002<br/>테이블 구조 확인"]
+        R3["REQ-003<br/>데이터 조회 (SELECT)"]
+        R4["REQ-004<br/>데이터 추가 (INSERT)"]
+        R5["REQ-005<br/>데이터 수정 (UPDATE)"]
+        R6["REQ-006<br/>데이터 삭제 (DELETE)"]
+        R7["REQ-007<br/>SQL 미리보기"]
     end
 
-    User --> UC1
-    User --> UC2
-    User --> UC3
-    User --> UC4
-    User --> UC5
-    User --> UC6
+    User --> R1
+    User --> R2
+    User --> R3
+    User --> R4
+    User --> R5
+    User --> R6
 
-    UC3 -.->|include| UC7
-    UC4 -.->|include| UC7
-    UC5 -.->|include| UC7
-    UC6 -.->|include| UC7
+    R3 -.->|include| R7
+    R4 -.->|include| R7
+    R5 -.->|include| R7
+    R6 -.->|include| R7
 ```
 
 ### 3.2 ERD (Entity Relationship Diagram)
