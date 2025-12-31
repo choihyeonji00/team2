@@ -51,10 +51,6 @@
 
 ```mermaid
 graph TD
-    User((Developer))
-
-```mermaid
-graph TD
     User(("👤<br/>Developer"))
 
     subgraph "Authentication"
